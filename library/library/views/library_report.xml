@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <record id="action_library_report" model="ir.actions.report">
+            <field name="name">Payment</field>
+            <field name="model">payment.details</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">library.report_library</field>
+            <field name="report_file">library.report_library</field>
+            <field name="binding_model_id" ref="model_payment_details"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+        <record id="action_library_customer_report" model="ir.actions.report">
+            <field name="name">Customer</field>
+            <field name="model">customer.customer</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">library.report_customer</field>
+            <field name="report_file">library.report_customer</field>
+            <field name="binding_model_id" ref="model_customer_customer"/>
+            <field name="binding_type">report</field>
+        </record>
+
+             <record id="action_library_member_report" model="ir.actions.report">
+            <field name="name">Member</field>
+            <field name="model">member.member</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">library.report_member</field>
+            <field name="report_file">library.report_member</field>
+            <field name="binding_model_id" ref="model_member_member"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+        <record id="action_report_books" model="ir.actions.report">
+            <field name="name">Books</field>
+            <field name="model">books.books</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">library.report_books</field>
+            <field name="report_file">library.report_books</field>
+            <field name="binding_model_id" ref="model_books_books"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

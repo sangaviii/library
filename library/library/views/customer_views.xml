@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Form View-->
+        <record id="view_customer_customer_form" model="ir.ui.view">
+            <field name="name">customer.customer.form</field>
+            <field name="model">customer.customer</field>
+            <field name="arch" type="xml">
+                <form string="Customer">
+                    <header>
+                        <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                        <button name="%(library.action_payment_wizard)d"  type="action"  string="Payment"/>
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <button name="action_books_books" type="object" class="oe_start_button"
+                                    icon="fa-shopping-basket">
+                                <div class="o_start_info">
+                                    <span class="o_start_text">Books</span>
+                                </div>
+                            </button>
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="name"/>
+                            <field name="customer_id"/>
+                            <field name="dob"/>
+                            <field name="phone_number"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                        </group>
+                         <notebook>
+                            <page string="General information">
+                                <field name="manager_ids">
+                                    <tree editable="bottom">
+                                        <field name="customer_id" invisible="1"/>
+                                        <field name="name"/>
+                                        <field name="product_category"/>
+                                        <field name="books_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Tree Views-->
+        <record id="view_customer_customer_tree" model="ir.ui.view">
+            <field name="name">customer.customer.tree</field>
+            <field name="model">customer.customer</field>
+            <field name="arch" type="xml">
+                <tree string="Customer">
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="phone_number"/>
+                    <field name="age"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_customer_customer" model="ir.actions.act_window">
+            <field name="name">customer</field>
+            <field name="res_model">customer.customer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--Menus-->
+        <menuitem id="library_menu" name="library" sequence="1"/>
+        <menuitem id="customer_menu" name="customer" sequence="2" action="action_customer_customer"
+                  parent="library_menu"/>
+    </data>
+</odoo>

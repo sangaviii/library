@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Form View-->
+        <record id="view_books_books_form" model="ir.ui.view">
+            <field name="name">books.books.form</field>
+            <field name="model">books.books</field>
+            <field name="arch" type="xml">
+                <form string="Books">
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <group>
+<!--                            <field name="author"/>-->
+                            <field name="name"/>
+                            <field name="sales_price"/>
+                            <field name="checkin_date"/>
+                            <field name="checkout_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Tree Views-->
+        <record id="view_books_books_tree" model="ir.ui.view">
+            <field name="name">books.books.tree</field>
+            <field name="model">books.books</field>
+            <field name="arch" type="xml">
+                <tree string="Books">
+<!--                    <field name="author"/>-->
+                     <field name="name"/>
+                    <field name="sales_price"/>
+                    <field name="checkin_date"/>
+                    <field name="checkout_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_books_books" model="ir.actions.act_window">
+            <field name="name">books</field>
+            <field name="res_model">books.books</field>
+            <field name="view_mode">tree,form</field>
+        </record>}
+
+        <!--Menus-->
+        <menuitem id="library_menu" name="library" sequence="1"/>
+        <menuitem id="books_menu" name="books" sequence="2" action="action_books_books"
+                  parent="library_menu"/>
+
+        <menuitem id="reporting_menu" name="Reporting" sequence="4"
+                  parent="library_menu"/>
+
+        <menuitem id="books_reporting_menu" name="Books" sequence="1" action="action_payment_wizard"
+                  parent="reporting_menu"/>
+
+    </data>
+</odoo>

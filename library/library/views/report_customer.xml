@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_customer">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Customer Report</h2>
+                            <p>Name: <span t-field="o.name"/></p>
+                            <p>Gender: <span t-field="o.gender"/></p>
+
+
+                        <t t-call="library.report_manager_name"/>
+                        <t t-set="sno" t-value="1" />
+                        <t t-foreach="o.manager_ids" t-as="manager">
+                             <div class="col-3 mt-1">
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %('QR', manager.product_category, 500, 500)"
+                                     style="max-height: 155px"/>
+                            </div>
+                            <t t-out="sno"/> .
+                            <t t-if="manager.product_category">
+                               <t t-out="manager.product_category"/><br/>
+                            </t>
+                            <t t-set="sno" t-value="sno+1" />
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+
+    <template id="report_manager_name">
+        <h2>Manager</h2>
+    </template>
+
+</odoo>

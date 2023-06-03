@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_library">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>payment Report</h2>
+                        <t t-if="o.book_code">
+                            <p>Book_code: <span t-field="o.book_code"/></p>
+                        </t>
+                        <t t-if="o.amount">
+                             <p>Amount : <span t-esc="o.amount"/></p>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+</odoo>
